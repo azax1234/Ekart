@@ -3,10 +3,16 @@
 //DECLARATIVE
 pipeline {
 	//agent any
-	 agent { docker { image 'maven:3.6.3'} 
-	  args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
-	  }
+	
 	// agent { docker { image 'node:13.8'} }
+
+	agent {
+    docker {
+      //image 'abhishekf5/maven-abhishek-docker-agent:v1'
+	  image 'maven:3.6.3'
+      args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
+     }
+       }
 	environment {
 		dockerHome = tool 'myDocker'
 		mavenHome = tool 'myMaven'
