@@ -58,11 +58,11 @@ pipeline {
 			}
 		}
 
-		/* stage('Build Docker Image') {
+		 stage('Build Docker Image') {
 			steps {
 				//"docker build -t in28min/currency-exchange-devops:$env.BUILD_TAG"
 				script {
-					dockerImage = docker.build("azax1234/currency-exchange-devops:${env.BUILD_TAG}")
+					dockerImage = docker.build("azax1234/EKART:${env.BUILD_TAG}")
 				}
 
 			}
@@ -77,7 +77,7 @@ pipeline {
 					}
 				}
 			}
-		} */
+		}
 	} 
 	
 	post {
