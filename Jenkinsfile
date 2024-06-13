@@ -85,10 +85,10 @@ pipeline {
 			steps {
 				sh "docker run -d -p 5070:5070 azax1234/ekart:0.0.0.${BUILD_NUMBER}"
 			}
-			}
+			}*/
 		
 	} 
-	 */
+	 
 	post {
 		always {
 			echo 'Im awesome. I run always'
@@ -100,5 +100,4 @@ pipeline {
 			echo 'I run when you fail'
 		}
 	}
-}
 }
