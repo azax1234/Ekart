@@ -80,6 +80,17 @@ pipeline {
 				}
 			}
 		}
+		stage('Run Docker Image') {
+			steps {
+				//"docker build -t in28min/currency-exchange-devops:$env.BUILD_TAG"
+				script {
+					//dockerImage = docker.build("azax1234/ekart:0.0.0.${env.BUILD_TAG}")
+					
+					docker run -d -p 5070:5070 "azax1234/ekart:0.0.0.${env.BUILD_TAG}"
+				}
+
+			}
+		}
 	} 
 	
 	post {
