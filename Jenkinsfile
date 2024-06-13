@@ -2,17 +2,17 @@
 
 //DECLARATIVE
 pipeline {
-	//agent any
+	agent any
 	
 	// agent { docker { image 'node:13.8'} }
 
-	agent {
+	/* agent {
     docker {
       image 'abhishekf5/maven-abhishek-docker-agent:v1'
 	  //image 'maven:3.6.3'
       args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
      }
-       }
+       } */
 	environment {
 		dockerHome = tool 'myDocker'
 		mavenHome = tool 'myMaven'
@@ -79,14 +79,16 @@ pipeline {
 				}
 			}
 		}
-		stage('Run Docker Image') {
+	// If you are running on a docker container as node, at the end of the pipeline,
+	// the container will be stopped. So no point running the container image that you just built 
+	/* 	stage('Run Docker Image') {
 			steps {
 				sh "docker run -d -p 5070:5070 azax1234/ekart:0.0.0.${BUILD_NUMBER}"
 			}
 			}
 		
 	} 
-	
+	 */
 	post {
 		always {
 			echo 'Im awesome. I run always'
