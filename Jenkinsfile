@@ -3,7 +3,9 @@
 //DECLARATIVE
 pipeline {
 	//agent any
-	 agent { docker { image 'maven:3.6.3'} }
+	 agent { docker { image 'maven:3.6.3'} 
+	  args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
+	  }
 	// agent { docker { image 'node:13.8'} }
 	environment {
 		dockerHome = tool 'myDocker'
@@ -16,7 +18,7 @@ pipeline {
 			steps {
 				echo "PATH - $PATH"
 				sh 'mvn --version'
-				//sh 'docker version'
+				sh 'docker version'
 				echo "Build"
 				
 				echo "BUILD_NUMBER - $env.BUILD_NUMBER"
