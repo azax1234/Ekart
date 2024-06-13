@@ -16,7 +16,7 @@ pipeline {
 			steps {
 				echo "PATH - $PATH"
 				sh 'mvn --version'
-				sh 'docker version'
+				//sh 'docker version'
 				echo "Build"
 				
 				echo "BUILD_NUMBER - $env.BUILD_NUMBER"
