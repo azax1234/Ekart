@@ -62,7 +62,9 @@ pipeline {
 			steps {
 				//"docker build -t in28min/currency-exchange-devops:$env.BUILD_TAG"
 				script {
-					dockerImage = docker.build("azax1234/ekart:0.0.0.${env.BUILD_TAG}")
+					//dockerImage = docker.build("azax1234/ekart:0.0.0.${env.BUILD_TAG}")
+					
+					dockerImage = docker.build("azax1234/ekart:0.0.0.$${BUILD_NUMBER}")
 				}
 
 			}
